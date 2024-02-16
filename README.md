@@ -3,7 +3,7 @@ Unit testing is a software testing method where individual units or components o
 
 ![image](https://github.com/manaskumarm/UnitTest/assets/14363425/7b96476b-bc5e-4464-8e39-4373dbe11857)
 
-There are different types of Unit test frameworks available NUnit, XUnit and MSTest. You can choose one of them based on your requirement(we disscuss MSTest). Here are the few attributes of MSTest framework
+There are different types of Unit test frameworks available like NUnit, XUnit and MSTest. You can choose one of them based on your requirement(we discuss MSTest). Here are the few attributes of MSTest framework:
 
 * [TestInitialize]	Marks a method that should be called before each test method. One such method should be present before each test class.
 * [TestCleanup]	Marks a method that should be called after each test method. One such method should be present before each test class.
@@ -19,13 +19,13 @@ There are different types of Unit test frameworks available NUnit, XUnit and MST
 * [ClassCleanup]	Methods that will be called only once after executing the test methods present in that class.
 
 # Advantages
-Early Bug Detection: Helps in finding bugs early in the development cycle, making them easier and cheaper to fix.
-Improved Code Quality: Enhances code quality by identifying issues early and promoting modular programming.
-Better Team Communication: Provides a clear and concise way for team members to discuss code, thereby enhancing team communication.
+* Early Bug Detection: Helps in finding bugs early in the development cycle, making them easier and cheaper to fix.
+* Improved Code Quality: Enhances code quality by identifying issues early and promoting modular programming.
+* Better Team Communication: Provides a clear and concise way for team members to discuss code, thereby enhancing team communication.
 
 # Disadvantages
-Increased Development Time: Unit testing can increase the initial development time due to the need to write tests alongside the code.
-Potential Overhead: Requires additional effort to set up and maintain test suites, which can add overhead to the development process.
+* Increased Development Time: Unit testing can increase the initial development time due to the need to write tests alongside the code.
+* Potential Overhead: Requires additional effort to set up and maintain test suites, which can add overhead to the development process.
 
 # Code
 ```
