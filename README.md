@@ -116,5 +116,87 @@ public class MyService
 * DataRow, DataDynamic for data driven
 * Use StringAssert for more string operation like Regex, Use StringAssert.Contains("test", "te");
 
+# NUnit
+**NUnit** is a popular open-source unit testing framework for C#. It is ported from the JUnit framework and is used for the development and execution of tests with the .NET language. NUnit facilitates batch execution of tests through the console runner (nunit-console.exe). It’s widely used in the .NET ecosystem to ensure code quality and reliability by writing and running automated tests. You can run test parallely using following options in NUnit:
+
+* _ParallelScope.Self_: The test itself may run in parallel with other tests.
+* _ParallelScope.Children_: Child tests may run in parallel with one another.
+* _ParallelScope.Fixtures_: Fixtures (test classes) may run in parallel with one another.
+* _ParallelScope.All_: The test and its descendants may run in parallel with others at the same level.
+
+```
+[Parallelizable(ParallelScope.Self)]
+[TestFixture]
+public class MyService_IsPrimeShould
+{
+    private MyService _myService;
+
+    [SetUp]
+    public void SetUp()
+    {
+        _myService = new MyService();
+    }
+
+    [Test]
+    public void IsPrime_InputIs1_ReturnFalse()
+    {
+        var result = _myService.IsPrime(1);
+
+        Assert.That(result, Is.False, "1 should not be prime");
+    }
+    
+    // For different inputs
+    [TestCase(2)]
+    [TestCase(9)]
+    [TestCase(1)]
+    public void IsPrime_ValuesLessThan_ReturnFalse(int value)
+    {
+        var result = _myService?.IsPrime(value);
+
+        Assert.That(result, Is.False, $"{value} should not be prime");
+    }
+    
+    [Test]
+    public void MethodThatThrowsArgumentException_ShouldThrowArgumentException()
+    {
+        // Arrange
+        var sample = new SampleClass();
+
+        // Act & Assert
+        var ex = Assert.Throws<ArgumentException>(() => sample.MethodThatThrowsArgumentException());
+
+        // Additional asserts on the exception if needed
+        Assert.AreEqual("Invalid argument.", ex.Message);
+    }
+}
+```
+# Assertions
+* _Assert.AreEqual()_ - Contains same objects in same order.
+* _Assert.AreEquivalent()_ - Contains same objects in any order.
+
+**Fluent Assertions** is a powerful library for enhancing unit tests in C# with expressive and concise assertions.
+```
+IEnumerable<int> numbers = new[] { 1, 2, 3 };
+numbers.Should().OnlyContain(n => n > 0);
+numbers.Should().HaveCount(4, "because we thought we put four items in the collection");
+```
+# Code Coverage
+**Coverlet** is a cross-platform code coverage tool for .NET, and coverlet.collector is a data collector extension for the Visual Studio Test Platform. It integrates with dotnet test and allows you to collect code coverage data during test execution.
+
+Installation (coverlet.collector)
+dotnet add package coverlet.collector
+
+Coverlet is integrated into the Visual Studio Test Platform as a data collector. To get coverage simply run the following command:
+dotnet test --collect:"XPlat Code Coverage"
+
+dotnet tool install -g dotnet-reportgenerator-globaltool
+
+reportgenerator -reports:./TestResults/**/*.xml -targetdir:./coverage-report -reporttypes:Html
+
+or 
+
+dotnet tool install -g dotnet-coverage
+dotnet tool install -g dotnet-reportgenerator-globaltool
+
 # Conclusion
 Unit testing plays a vital role in ensuring the reliability and quality of software applications. While it offers numerous advantages such as early bug detection and improved code quality, developers must also be mindful of potential drawbacks like increased development time and overhead. By incorporating unit testing into the development workflow, teams can build robust and maintainable software products that meet the highest standards of quality and reliability.
