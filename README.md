@@ -1,10 +1,27 @@
 # UnitTest
-Unit testing is a software testing method where individual units or components of a software are tested independently to ensure they function correctly. This involves testing small pieces of code, typically individual functions or methods.
+Unit testing is a software testing method where individual units or components of a software are tested independently to ensure they function correctly. This involves testing small pieces of code, typically individual functions or methods. Following are few characteristics:
+
+* **Isolation**: Units are tested independently to ensure that they work correctly in isolation. Dependencies are often mocked or stubbed to simulate interactions.
+* **Automation**: Unit tests are typically automated, allowing them to be run frequently and consistently without manual intervention.
+* **Repeatability**: Unit tests can be executed repeatedly with the same input data to verify that the software behaves consistently.
+* **Speed**: Unit tests are generally fast to execute, providing quick feedback to developers about the correctness of the code.
+* **Granularity**: Tests focus on small, specific parts of the code, allowing developers to pinpoint issues precisely.
 
 ![image](https://github.com/manaskumarm/UnitTest/assets/14363425/7b96476b-bc5e-4464-8e39-4373dbe11857)
 
-There are different types of Unit test frameworks available like NUnit, XUnit and MSTest. You can choose one of them based on your requirement(we discuss MSTest). Here are the few attributes of MSTest framework:
+# Advantages
+* Early Bug Detection: Helps in finding bugs early in the development cycle, making them easier and cheaper to fix.
+* Improved Code Quality: Enhances code quality by identifying issues early and promoting modular programming.
+* Better Team Communication: Provides a clear and concise way for team members to discuss code, thereby enhancing team communication.
 
+# Disadvantages
+* Increased Development Time: Unit testing can increase the initial development time due to the need to write tests alongside the code.
+* Potential Overhead: Requires additional effort to set up and maintain test suites, which can add overhead to the development process.
+
+There are different types of Unit test frameworks available like NUnit, XUnit and MSTest. You can choose one of them based on your requirement(we discuss about MSTest and NUnit).
+
+# Framework 1: MSTest
+ Here are the few attributes of MSTest framework:
 * [TestInitialize]	Marks a method that should be called before each test method. One such method should be present before each test class.
 * [TestCleanup]	Marks a method that should be called after each test method. One such method should be present before each test class.
 * [TestClass]	Marks a class that contains tests.
@@ -17,15 +34,6 @@ There are different types of Unit test frameworks available like NUnit, XUnit an
 * [TestCategory]	Specify the category for the test.
 * [ClassInitialize]	Methods that will be called only once before executing any of the test methods present in that class.
 * [ClassCleanup]	Methods that will be called only once after executing the test methods present in that class.
-
-# Advantages
-* Early Bug Detection: Helps in finding bugs early in the development cycle, making them easier and cheaper to fix.
-* Improved Code Quality: Enhances code quality by identifying issues early and promoting modular programming.
-* Better Team Communication: Provides a clear and concise way for team members to discuss code, thereby enhancing team communication.
-
-# Disadvantages
-* Increased Development Time: Unit testing can increase the initial development time due to the need to write tests alongside the code.
-* Potential Overhead: Requires additional effort to set up and maintain test suites, which can add overhead to the development process.
 
 # Code
 ```
@@ -115,8 +123,7 @@ public class MyService
 * Use TestBase class for common func
 * DataRow, DataDynamic for data driven
 * Use StringAssert for more string operation like Regex, Use StringAssert.Contains("test", "te");
-
-# NUnit
+# Framework 2: NUnit
 **NUnit** is a popular open-source unit testing framework for C#. It is ported from the JUnit framework and is used for the development and execution of tests with the .NET language. NUnit facilitates batch execution of tests through the console runner (nunit-console.exe). It’s widely used in the .NET ecosystem to ensure code quality and reliability by writing and running automated tests. You can run test parallely using following options in NUnit:
 
 * _ParallelScope.Self_: The test itself may run in parallel with other tests.
